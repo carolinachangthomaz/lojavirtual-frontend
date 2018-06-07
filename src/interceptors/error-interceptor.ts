@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent} from "@angular/common/http";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS} from "@angular/common/http";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log("passou pelo interceptor");
+        console.log("passou pelo ErrorInterceptor");
        return next.handle(req)
        .catch((error,caught) => {
         
@@ -25,3 +25,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 }
 
+export const ErrorInterceptorProvider = {
+    provide: HTTP_INTERCEPTORS,
+     useClass: ErrorInterceptor, 
+     multi: true
+
+};
