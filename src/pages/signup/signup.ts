@@ -32,7 +32,7 @@ export class SignupPage {
           senha: ['123',[Validators.required]],
           logradouro: ['Rua João',[Validators.required]],
           numero: ['25',[Validators.required]],
-          complemento: ['', [Validators.required]],
+          complemento: ['', []],
           bairro:['Copacabana',[Validators.required]],
           cep: ['10828333', [Validators.required]],
           telefone1:['976736373',[Validators.required]],
