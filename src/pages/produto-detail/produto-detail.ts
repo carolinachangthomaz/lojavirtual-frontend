@@ -1,15 +1,9 @@
+import { CartService } from './../../services/domain/cart.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProdutoDTO } from '../../models/produto.dto';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { API_CONFIG } from '../../config/api.config';
-
-/**
- * Generated class for the ProdutoDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -22,7 +16,8 @@ export class ProdutoDetailPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public produtoService: ProdutoService) {
+              public produtoService: ProdutoService,
+              public cartService: CartService) {
   }
 
   ionViewDidLoad() {
@@ -45,5 +40,9 @@ export class ProdutoDetailPage {
    
 }
 
+addToCart(produto: ProdutoDTO){
+  this.cartService.addProduto(produto);
+  this.navCtrl.setRoot('CartPage');
+}
 
 }
