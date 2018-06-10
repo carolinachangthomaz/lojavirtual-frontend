@@ -4,6 +4,7 @@ import { CartItem } from './../../models/cart-item';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
+import { ProdutoDTO } from '../../models/produto.dto';
 
 /**
  * Generated class for the CartPage page.
@@ -43,5 +44,26 @@ export class CartPage {
   
       });
     }
+  }
+
+  removeItem(produto: ProdutoDTO){
+    this.items = this.cartService.removeProduto(produto).items;
+  }
+  
+  incrementarQuantidade(produto: ProdutoDTO){
+    this.items = this.cartService.incrementarProduto(produto).items;
+  }
+
+  decrementarQuantidade(produto: ProdutoDTO){
+    this.items = this.cartService.decrementarProduto(produto).items;
+  }
+
+  total() : number{
+    return this.cartService.getTotal();
+  }
+
+
+  goOn() {
+    this.navCtrl.setRoot('CategoriasPage');
   }
 }
