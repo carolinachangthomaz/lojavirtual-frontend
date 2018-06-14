@@ -66,4 +66,8 @@ export class CartPage {
   goOn() {
     this.navCtrl.setRoot('CategoriasPage');
   }
+
+  finalizarPedido(){
+    this.navCtrl.setRoot('EnderecoPage');
+  }
 }
