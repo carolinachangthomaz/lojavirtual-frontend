@@ -43,7 +43,7 @@ export class EnderecoPage {
            cliente : {id: response['id']},
            enderecoDeEntrega : null,
            pagamento : null,
-           itens : carrinho.items.map(x => {return {quantidade: x.quantidade , produto: {id: x.produto.id}}})
+           itens : carrinho.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
         }
 
       }, error => {
@@ -58,6 +58,6 @@ export class EnderecoPage {
 
   nextPage(item: EnderecoDTO){
      this.pedido.enderecoDeEntrega = {id: item.id};
-     console.log(this.pedido);
+     this.navCtrl.push('PagamentoPage', {pedido: this.pedido});
   }
 }
