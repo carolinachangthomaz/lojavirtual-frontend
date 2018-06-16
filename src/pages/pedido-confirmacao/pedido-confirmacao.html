@@ -58,17 +58,19 @@
   </ion-card>
 
   <ion-card>
-      <ion-card-header>
+        <ion-card-header>
          Pagamento
-      </ion-card-header>
-  </ion-card>
+        </ion-card-header>
+  
+        <ion-item *ngIf="pedido.pagamento['@type'] == 'pagamentoComCartao'">
+            <h3>Pagamento com Cartão</h3>
+            <p>Parcelas: {{pedido.pagamento.numeroDeParcelas}}</p>
+        </ion-item>
+        <ion-item *ngIf="pedido.pagamento['@type'] == 'pagamentoComBoleto'">
+            <h3>Pagamento com Boleto</h3>>
+        </ion-item>
+   </ion-card>
 
-  <ion-item *ngIf="pedido.pagamento['@type'] == 'pagamentoComCartao'">
-      <h3>Pagamento com Cartão</h3>
-      <p>Parcelas: {{pedido.pagamento.numeroDeParcelas}}</p>
-  </ion-item>
-  <ion-item *ngIf="pedido.pagamento['@type'] == 'pagamentoComBoleto'">
-      <h3>Pagamento com Boleto</h3>>
-  </ion-item>
-
+   <button ion-button block (click)="confirmarPedido()">Confirmar Pedido </button>
+   <button ion-button block outline (click)="back()">Voltar </button>
 </ion-content>
